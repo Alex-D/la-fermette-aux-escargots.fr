@@ -1,0 +1,11 @@
+{
+  "name": "la-fermette-aux-escargots.fr",
+  "private": true,
+  "scripts": {
+    "dev": "browser-sync start -s --ss src -w src/**/*"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "browser-sync": "2.26.12"
+  }
+}
