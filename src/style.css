@@ -55,6 +55,11 @@ table {
 
 /******************/
 
+:root {
+	--title-font: 'Cantata One', serif;
+	--text-font: 'Poppins', sans-serif;
+}
+
 *,
 *::before,
 *::after {
@@ -65,7 +70,7 @@ table {
 
 body {
 	font-size: 16px;
-	font-family: 'Poppins', serif;
+	font-family: var(--text-font);
 }
 
 strong {
@@ -83,7 +88,8 @@ sup {
 }
 
 p,
-li {
+li,
+address {
 	line-height: 1.4;
 }
 
@@ -104,7 +110,7 @@ li {
 }
 
 .c-section {
-	margin-bottom: 64px;
+	margin-bottom: 80px;
 }
 
 .c-section p:not(:last-child) {
@@ -129,9 +135,10 @@ li {
 }
 
 .c-title {
-	font-family: 'DM Serif Display', serif;
+	font-family: var(--title-font);
 	font-size: 40px;
-	letter-spacing: 1px;
+	line-height: 1.3;
+	letter-spacing: -1px;
 	margin: -3px 0 24px;
 }
 
@@ -141,27 +148,26 @@ li {
 }
 
 .c-subtitle {
-	font-family: 'DM Serif Display', serif;
+	font-family: var(--title-font);
 	font-size: 32px;
-	letter-spacing: 1px;
-	margin: 8px 0 16px;
+	letter-spacing: -1px;
+	margin: 0 0 16px;
 }
 
 .c-subtitle--sup {
 	display: block;
-	font-family: 'Poppins', serif;
+	font-family: var(--text-font);
 	font-size: 14px;
-	font-weight: 600;
 	text-transform: uppercase;
 	letter-spacing: 2px;
-	margin-bottom: 4px;
-	color: #777;
+	margin-bottom: 6px;
+	color: #555;
 }
 
 .c-separator {
 	border: none;
 	border-top: 1px solid #ccc;
-	margin: 64px 0;
+	margin: 80px 0;
 }
 
 /*********
@@ -190,8 +196,8 @@ li {
 }
 
 .m-header--name {
-	font-family: 'DM Serif Display', serif;
-	letter-spacing: 1px;
+	font-family: var(--title-font);
+	letter-spacing: -1px;
 	font-size: 32px;
 }
 
@@ -200,12 +206,30 @@ li {
 }
 
 .m-header--menu-item {
-	display: inline-block;
+	position: relative;
 	padding: 16px;
 }
 
 .m-header--menu ul li:last-child .m-header--menu-item {
-	padding-right: 0;
+	margin-right: -16px;
+}
+
+.m-header--menu-item::after {
+	position: absolute;
+	left: 50%;
+	bottom: 14px;
+	content: "";
+	display: block;
+	height: 1px;
+	width: calc(100% - 2 * 16px - 2px);
+	background: #555;
+	transform: translateX(-50%) scaleX(0);
+	transform-origin: center center;
+	transition: transform 150ms;
+}
+
+.m-header--menu-item:hover::after {
+	transform: translateX(-50%) scaleX(1);
 }
 
 
@@ -215,8 +239,8 @@ li {
 
 .m-hero {
 	position: relative;
-	margin-bottom: 96px;
-	color: #fff;
+	margin-bottom: 154px;
+	color: #111;
 	background: #111 url('./assets/photos/parc.min.jpg') center 58%;
 	background-size: cover;
 	min-height: 500px;
@@ -230,13 +254,26 @@ li {
 
 .m-hero--box {
 	position: absolute;
-	bottom: -24px;
+	bottom: -64px;
 	left: 50%;
-	background: hsla(0, 0%, 7%, 0.8);
-	padding: 24px;
+	background: hsla(0, 0%, 100%, 0.8);
+	padding: 40px;
 	width: calc(100% - 48px);
-	border: 1px solid #fff;
+	max-width: 1092px;
 	transform: translate(-50%, 0);
+	border: 1px solid rgba(255, 255, 255, 0.7);
+	backdrop-filter: blur(15px);
+	box-shadow: rgba(0, 0, 0, 0.15) 0 0 3px, rgba(0, 0, 0, 0.15) 0 0 10px;
+}
+
+.m-hero--box-inner {
+	display: flex;
+}
+
+.m-hero--logo-bio {
+	width: 100px;
+	margin-right: 48px;
+	margin-left: -8px;
 }
 
 .m-hero p:not(:last-child) {
@@ -293,9 +330,33 @@ li {
  *********/
 
 footer {
-	padding: 24px 0;
+	margin-top: 100px;
+	padding: 40px 0 0;
 	color: #111;
-	background: #fff;
-	border-top: 1px solid #111;
+	background: #ddd;
 }
 
+.m-footer--columns {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+}
+
+footer .c-subtitle {
+	font-size: 24px;
+}
+
+.m-footer--contact-line {
+	margin-bottom: 16px;
+}
+
+.m-footer--contact-line .c-subtitle--sup {
+	margin-bottom: 0;
+}
+
+.m-footer--siret {
+	border-top: 1px solid #aaa;
+	margin-top: 32px;
+	padding-top: 16px;
+	padding-bottom: 16px;
+	color: #777;
+}
