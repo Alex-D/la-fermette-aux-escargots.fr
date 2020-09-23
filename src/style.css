@@ -176,7 +176,7 @@ address {
 
 .m-header {
 	position: relative;
-	padding: 16px 0;
+	padding: 24px 0;
 	color: #111;
 	background: #fff;
 	box-shadow: rgba(0, 0, 0, 0.15) 0 0 3px, rgba(0, 0, 0, 0.15) 0 0 10px;
@@ -196,9 +196,19 @@ address {
 }
 
 .m-header--name {
+	position: relative;
 	font-family: var(--title-font);
 	letter-spacing: -1px;
 	font-size: 32px;
+	padding-right: 100px;
+}
+
+.m-header--logo {
+	position: absolute;
+	top: 50%;
+	right: 0;
+	width: 90px;
+	transform: translateY(-56%);
 }
 
 .m-header--menu ul {
