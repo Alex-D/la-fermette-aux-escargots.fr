@@ -2,7 +2,7 @@
   "name": "la-fermette-aux-escargots.fr",
   "private": true,
   "scripts": {
-    "dev": "browser-sync start -s --ss src -w src/**/*"
+    "dev": "browser-sync start --port 8000 -s --ss src -w src/**/*"
   },
   "dependencies": {},
   "devDependencies": {
