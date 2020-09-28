@@ -238,6 +238,7 @@ address {
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
+		max-width: var(--max-width);
 	}
 }
 
@@ -287,6 +288,7 @@ address {
 
 .m-header--menu-item {
 	position: relative;
+	display: inline-block;
 	padding: 16px;
 }
 
@@ -312,7 +314,7 @@ address {
 	transition: transform 150ms;
 }
 
-.m-header--menu-item:hover::after {
+a.m-header--menu-item:hover::after {
 	transform: translateX(-50%) scaleX(1);
 }
 
@@ -334,15 +336,15 @@ address {
 .m-hero .m-hero--wrapper {
 	margin: 0;
 	padding: 0;
-	display: flex;
 }
 
 .m-hero--box {
 	position: absolute;
 	bottom: -64px;
 	left: 50%;
+	text-align: center;
 	background: hsla(0, 0%, 100%, 0.8);
-	padding: 20px 16px 42px;
+	padding: 32px 16px 42px;
 	width: calc(100% - 48px);
 	max-width: 1092px;
 	transform: translate(-50%, 0);
@@ -351,10 +353,16 @@ address {
 	box-shadow: rgba(0, 0, 0, 0.15) 0 0 3px, rgba(0, 0, 0, 0.15) 0 0 10px;
 }
 
+.m-hero--box-inner {
+	display: flex;
+	flex-direction: column-reverse;
+}
+
 .m-hero--logo-bio {
 	display: block;
-	width: 100px;
-	margin: 0 auto;
+	width: 200px;
+	margin: 24px auto 0;
+	color: #1C9B48;
 }
 
 .m-hero p:not(:last-child) {
@@ -364,16 +372,17 @@ address {
 @media (min-width: 681px) {
 	.m-hero--box {
 		padding: 40px;
+		text-align: left;
 	}
 
 	.m-hero--box-inner {
-		display: flex;
+		flex-direction: row;
 	}
 
 	.m-hero--logo-bio {
-		width: 100px;
-		margin-right: 48px;
-		margin-left: -8px;
+		width: 200px;
+		margin: 0 48px 0 -8px;
+		transform: translateY(2px);
 	}
 }
 
