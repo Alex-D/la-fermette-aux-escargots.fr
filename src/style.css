@@ -119,10 +119,14 @@ address {
 .c-columns {
 	display: grid;
 	grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-	grid-gap: var(--grid-gap);
+	grid-gap: calc(var(--grid-gap) / 2);
 }
 
-@media (min-width: 500px) {
+@media (min-width: 593px) {
+	.c-columns {
+		grid-gap: var(--grid-gap);
+	}
+
 	.c-columns__swap > :last-child {
 		order: -1;
 	}
@@ -163,17 +167,19 @@ address {
 
 .c-title__centered {
 	text-align: center;
-	margin-bottom: 64px;
+	margin-bottom: 64px !important;
 }
 
 .c-subtitle {
+	line-height: 1;
 	font-family: var(--title-font);
 	font-size: var(--subtitle-font-size);
 	letter-spacing: -1px;
 	margin: 0 0 16px;
 }
 
-.c-subtitle--sup {
+.c-subtitle--sup,
+.c-subtitle--sub {
 	display: block;
 	font-family: var(--text-font);
 	font-size: 14px;
@@ -181,6 +187,10 @@ address {
 	letter-spacing: 2px;
 	margin-bottom: 6px;
 	color: #555;
+}
+
+.c-subtitle--sub {
+	margin-top: 6px;
 }
 
 .c-separator {
@@ -324,12 +334,14 @@ a.m-header--menu-item:hover::after {
  *********/
 
 .m-hero {
+	--hero-vertical-position: 50%;
+
 	position: relative;
 	margin: 0 auto 154px;
 	max-width: var(--max-width);
 	min-height: 600px;
 	color: #111;
-	background: #111 url('./assets/photos/parc.min.jpg') center 58%;
+	background: #111 center var(--hero-vertical-position);
 	background-size: cover;
 }
 
@@ -362,7 +374,6 @@ a.m-header--menu-item:hover::after {
 	display: block;
 	width: 200px;
 	margin: 24px auto 0;
-	color: #1C9B48;
 }
 
 .m-hero p:not(:last-child) {
@@ -391,7 +402,12 @@ a.m-header--menu-item:hover::after {
  * Content
  *********/
 
-.picture {
+.c-content .c-title {
+	margin-top: 48px;
+	margin-bottom: 48px;
+}
+
+.c-picture {
 	--border-color: rgba(0, 0, 0, 0.2);
 	position: relative;
 	width: 100%;
@@ -400,8 +416,8 @@ a.m-header--menu-item:hover::after {
 	box-shadow: rgba(0, 0, 0, 0.15) 0 0 3px, rgba(0, 0, 0, 0.15) 0 0 10px;
 }
 
-.picture::before,
-.picture::after {
+.c-picture::before,
+.c-picture::after {
 	content: "";
 	display: block;
 	position: absolute;
@@ -412,15 +428,15 @@ a.m-header--menu-item:hover::after {
 	border: 1px solid var(--border-color);
 }
 
-.picture::before {
+.c-picture::before {
 	transform: translate(-8px, -8px);
 }
 
-.picture::after {
+.c-picture::after {
 	transform: translate(8px, 8px);
 }
 
-.picture img {
+.c-picture img {
 	position: absolute;
 	top: 0;
 	width: 100%;
@@ -430,16 +446,52 @@ a.m-header--menu-item:hover::after {
 	border: 1px solid rgba(0, 0, 0, 0.4);
 }
 
+.c-large-picture {
+	--vertical-position: 50%;
+
+	position: relative;
+	margin: 0 0 124px 50%;
+	width: 100%;
+	max-width: var(--max-width);
+	height: 300px;
+	background: #111 center var(--vertical-position);
+	background-size: cover;
+	transform: translateX(-50%);
+}
+
+.c-large-picture .c-title {
+	position: absolute;
+	top: 100%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	margin: 0;
+	background: hsla(0, 0%, 100%, 0.8);
+	padding: 16px 72px;
+	backdrop-filter: blur(15px);
+	border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+	box-shadow: rgba(0, 0, 0, 0.15) 0 0 3px, rgba(0, 0, 0, 0.15) 0 0 10px;
+}
+
 
 /*********
  * Footer
  *********/
 
-footer {
+.m-footer {
 	margin-top: 100px;
 	padding: 40px 0 0;
 	color: #111;
 	background: #ddd;
+}
+
+.m-footer a {
+	color: #111;
+	text-underline-position: under;
+	text-decoration-color: #999;
+}
+
+.m-footer a:hover {
+	text-decoration-color: #111;
 }
 
 .m-footer--columns {
@@ -448,7 +500,7 @@ footer {
 	grid-gap: var(--grid-gap);
 }
 
-footer .c-subtitle {
+.m-footer .c-subtitle {
 	font-size: 24px;
 }
 
