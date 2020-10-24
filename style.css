@@ -119,7 +119,15 @@ address {
 .c-columns {
 	display: grid;
 	grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+	grid-gap: var(--grid-gap);
+}
+
+.c-columns__no-vertical-gap {
 	grid-gap: calc(var(--grid-gap) / 2);
+}
+
+.c-columns__bigger-vertical-gap {
+	grid-gap: 80px var(--grid-gap);
 }
 
 @media (min-width: 593px) {
