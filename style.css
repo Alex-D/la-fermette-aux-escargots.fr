@@ -458,13 +458,20 @@ a.m-header--menu-item:hover::after {
 	--vertical-position: 50%;
 
 	position: relative;
-	margin: 0 0 124px 50%;
+	margin: 0 0 80px 50%;
 	width: 100%;
 	max-width: var(--max-width);
-	height: 300px;
+	height: 150px;
 	background: #111 center var(--vertical-position);
 	background-size: cover;
 	transform: translateX(-50%);
+}
+
+@media (min-width: 681px) {
+	.c-large-picture {
+		height: 300px;
+		margin-bottom: 124px;
+	}
 }
 
 .c-large-picture .c-title {
